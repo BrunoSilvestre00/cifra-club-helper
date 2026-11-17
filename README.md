@@ -1,5 +1,9 @@
 # Cifra Club Helper
 
+<img src="public/assets/logo.png" alt="Logo do Cifra Club Helper" width="160" />
+
+[Acessar o Cifra Club Helper](https://brunosilvestre00.github.io/cifra-club-helper/)
+
 Editor visual para preparar cifras e tablaturas para o Cifra Club. Organize músicas por artista e trabalhe em blocos de **Letra**, **Arranjo** ou **Arranjo com letra**.
 
 O armazenamento é **no navegador, usando IndexedDB**. Não é necessário manter uma API ou um banco na nuvem. Os dados não são enviados ao GitHub.
