@@ -1,0 +1,864 @@
+.brand-logo {
+  display: block;
+  width: 39px;
+  height: 39px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  color: #8d8d8d;
+  border-radius: 7px;
+  width: 36px;
+  height: 36px;
+  margin-left: 17px;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: #eea054;
+  background: #fff3e4;
+  color: #d36a00;
+  box-shadow: 0 0 12px #ff8b0014;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --green: #ff9a19;
+  --green-dark: #ffb13b;
+  --accent: #ff9900;
+  --line: #343434;
+  color: #dedede;
+  background: #191919;
+}
+:root[data-theme="dark"] body {
+  background: #191919;
+  color: #dedede;
+}
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select {
+  background: #272727;
+  border-color: #414141;
+  color: #e1e1e1;
+}
+:root[data-theme="dark"] input:focus,
+:root[data-theme="dark"] textarea:focus,
+:root[data-theme="dark"] select:focus {
+  border-color: #d38222;
+  box-shadow: 0 0 0 3px #ff990015;
+}
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+  color: #6f6f6f;
+}
+:root[data-theme="dark"] .helper-app .app-header {
+  background: #1b1b1b;
+  border-color: #383838;
+  border-top-color: #ff9900;
+}
+:root[data-theme="dark"] .helper-app .brand {
+  color: #eee;
+}
+:root[data-theme="dark"] .helper-app .brand em {
+  color: #ffb344;
+  background: #3a2b19;
+  border-color: #55401f;
+}
+:root[data-theme="dark"] .helper-app .workspace-name,
+:root[data-theme="dark"] .helper-app .storage-label {
+  color: #777;
+}
+:root[data-theme="dark"] .theme-toggle {
+  background: #262626;
+  border-color: #3e3e3e;
+  color: #b4b4b4;
+}
+:root[data-theme="dark"] .theme-toggle:hover {
+  color: #ffaf27;
+  border-color: #b97620;
+  background: #382b1b;
+}
+:root[data-theme="dark"] .helper-app .primary {
+  background: #ff9900;
+  border-color: #ff9900;
+  color: #231807;
+  font-weight: 600;
+}
+:root[data-theme="dark"] .helper-app .primary:hover {
+  background: #ffae2b;
+  border-color: #ffae2b;
+}
+:root[data-theme="dark"] .helper-app .secondary,
+:root[data-theme="dark"] .helper-app .small-button {
+  background: #292929;
+  border-color: #444;
+  color: #c4c4c4;
+}
+:root[data-theme="dark"] .helper-app .secondary:hover,
+:root[data-theme="dark"] .helper-app .small-button:hover {
+  background: #3a2c1d;
+  border-color: #966129;
+  color: #ffc16a;
+}
+:root[data-theme="dark"] .helper-app .icon-button {
+  color: #858585;
+}
+:root[data-theme="dark"] .helper-app .icon-button:hover {
+  background: #3a2d1d;
+  color: #ffb341;
+}
+:root[data-theme="dark"] .helper-app .text-button {
+  color: #e6a54a;
+}
+:root[data-theme="dark"] .helper-app .text-button:hover {
+  color: #ffc360;
+}
+:root[data-theme="dark"] .helper-app .eyebrow {
+  color: #767676;
+}
+:root[data-theme="dark"] .helper-app .eyebrow.accent {
+  color: #eca342;
+}
+:root[data-theme="dark"] .helper-app .count-badge {
+  background: #3b2d1b;
+  color: #cd9c55;
+}
+:root[data-theme="dark"] .helper-app .library-heading h1,
+:root[data-theme="dark"] .helper-app .song-title {
+  color: #e5e5e5;
+}
+:root[data-theme="dark"] .helper-app .library-heading p {
+  color: #858585;
+}
+:root[data-theme="dark"] .helper-app .library-toolbar .search-field {
+  background: #252525;
+  border-color: #3b3b3b;
+  color: #777;
+}
+:root[data-theme="dark"] .helper-app .library-toolbar .search-field input {
+  background: transparent;
+  color: #ddd;
+}
+:root[data-theme="dark"] .library-sort,
+:root[data-theme="dark"] .library-summary {
+  color: #777;
+}
+:root[data-theme="dark"] .library-sort select {
+  background: #252525;
+  color: #bcbcbc;
+  border-color: #3b3b3b;
+}
+:root[data-theme="dark"] .helper-app .song-card {
+  background: #242424;
+  border-color: #3a3a3a;
+}
+:root[data-theme="dark"] .helper-app .song-card:hover {
+  border-color: #91602d;
+  box-shadow: 0 4px 20px #0002;
+}
+:root[data-theme="dark"] .helper-app .song-card h2 {
+  color: #e5e5e5;
+}
+:root[data-theme="dark"] .helper-app .song-card-icon {
+  background: #3a2b18;
+  color: #eda042;
+}
+:root[data-theme="dark"] .helper-app .song-card-top {
+  color: #826849;
+}
+:root[data-theme="dark"] .card-artist {
+  color: #e3a550;
+}
+:root[data-theme="dark"] .helper-app .song-card-tags > span {
+  color: #858585;
+}
+:root[data-theme="dark"] .helper-app .song-card-footer {
+  border-color: #373737;
+  color: #797979;
+}
+:root[data-theme="dark"] .helper-app .library-empty {
+  background: #22211f;
+  border-color: #4b4135;
+  color: #888;
+}
+:root[data-theme="dark"] .helper-app .library-empty h1,
+:root[data-theme="dark"] .helper-app .library-empty h2 {
+  color: #ccc;
+}
+:root[data-theme="dark"] .helper-app .empty-music-icon {
+  background: #3a2b18;
+  color: #e8a34c;
+  border-color: #5a4021;
+}
+:root[data-theme="dark"] .helper-app .library-notice,
+:root[data-theme="dark"] .helper-app .notice {
+  background: #3b2c19;
+  color: #dbad74;
+  border-color: #684920;
+}
+:root[data-theme="dark"] .helper-app .song-document-bar {
+  background: #1f1f1f;
+  border-color: #383838;
+}
+:root[data-theme="dark"] .helper-app .back-link {
+  color: #8d8d8d;
+}
+:root[data-theme="dark"] .helper-app .editable-label:hover {
+  color: #efad52;
+}
+:root[data-theme="dark"] .helper-app .editable-input {
+  background: #292929;
+  color: #eee;
+  border-color: #b27a32;
+}
+:root[data-theme="dark"] .focused-workspace {
+  background: #191919;
+}
+:root[data-theme="dark"] .structure-sidebar {
+  background: #202020;
+  border-color: #353535;
+}
+:root[data-theme="dark"] .structure-title h2 {
+  color: #c4c4c4;
+}
+:root[data-theme="dark"] .structure-item.active {
+  background: #392b1b;
+  border-color: #654422;
+}
+:root[data-theme="dark"] .structure-item.active:after {
+  background: #ff9900;
+}
+:root[data-theme="dark"] .structure-item-label strong {
+  color: #b5b5b5;
+}
+:root[data-theme="dark"] .structure-item-label small {
+  color: #747474;
+}
+:root[data-theme="dark"] .structure-item.active .structure-item-label strong {
+  color: #f3b152;
+}
+:root[data-theme="dark"] .structure-item.active .structure-number {
+  color: #b88743;
+}
+:root[data-theme="dark"] .structure-number {
+  color: #626262;
+}
+:root[data-theme="dark"] .structure-select > svg {
+  color: #c7924c;
+}
+:root[data-theme="dark"] .structure-sidebar .block-grip {
+  color: #595959;
+}
+:root[data-theme="dark"] .structure-add > span,
+:root[data-theme="dark"] .structure-empty,
+:root[data-theme="dark"] .structure-tip p {
+  color: #767676;
+}
+:root[data-theme="dark"] .structure-tip {
+  color: #71604a;
+}
+:root[data-theme="dark"] .structure-end.drop-before {
+  background: #3a2a18;
+  border-color: #a87534;
+}
+:root[data-theme="dark"] .song-properties {
+  border-color: #343434;
+}
+:root[data-theme="dark"] .song-properties > label {
+  color: #828282;
+}
+:root[data-theme="dark"] .song-properties select {
+  background: #272727;
+  color: #ddd;
+}
+:root[data-theme="dark"] .focused-block-intro h2 {
+  color: #ddd;
+}
+:root[data-theme="dark"] .focused-block-intro p {
+  color: #868686;
+}
+:root[data-theme="dark"] .helper-app .block-type {
+  background: #3a2a18;
+  color: #e5a452;
+  border-color: #65431e;
+}
+:root[data-theme="dark"] .helper-app .block-type.arrangement {
+  background: #382f1d;
+  color: #d4b16c;
+  border-color: #5d4a27;
+}
+:root[data-theme="dark"] .focused-block {
+  background: #232323;
+  border-color: #3c3c3c;
+}
+:root[data-theme="dark"] .focused-block-toolbar {
+  background: #282828;
+  border-color: #3a3a3a;
+}
+:root[data-theme="dark"] .focused-block-toolbar > label {
+  color: #858585;
+}
+:root[data-theme="dark"] .focused-block-toolbar select {
+  background: #242424;
+  color: #ddd;
+}
+:root[data-theme="dark"] .focused-editor-footer {
+  color: #757575;
+}
+:root[data-theme="dark"] .first-block h2 {
+  color: #c6c6c6;
+}
+:root[data-theme="dark"] .first-block p {
+  color: #858585;
+}
+:root[data-theme="dark"] .helper-app .lyric-input {
+  background: #1e1e1e;
+  color: #ddd;
+  border-color: #3a3a3a;
+}
+:root[data-theme="dark"] .helper-app .lyric-input::placeholder {
+  color: #686868;
+}
+:root[data-theme="dark"] .helper-app .lyric-preview-label span,
+:root[data-theme="dark"] .helper-app .lyric-preview-label small {
+  color: #828282;
+}
+:root[data-theme="dark"] .helper-app .syllables button {
+  color: #d7d7d7;
+}
+:root[data-theme="dark"] .helper-app .syllables button:hover,
+:root[data-theme="dark"] .helper-app .syllables .caret-char {
+  background: #4d361a;
+  box-shadow: -1px 0 #d18b38;
+}
+:root[data-theme="dark"] .helper-app .syllables .end-char {
+  color: #686868;
+}
+:root[data-theme="dark"] .helper-app .chord-chip {
+  background: #4b3115;
+  border-color: #8e5f25;
+  color: #ffc36a;
+}
+:root[data-theme="dark"] .helper-app .chord-chip.chosen {
+  background: #624117;
+  border-color: #d69a42;
+  box-shadow: 0 0 0 2px #ff990022;
+}
+:root[data-theme="dark"] .helper-app .chord-tools {
+  border-color: #363636;
+  color: #999;
+}
+:root[data-theme="dark"] .helper-app .chord-tools .small-button {
+  background: #3c2c1b;
+  color: #e8b978;
+  border-color: #73502b;
+}
+:root[data-theme="dark"] .helper-app .position-label {
+  color: #858585;
+}
+:root[data-theme="dark"] .helper-app .arrangement-setup {
+  background: #29251f;
+  border-color: #433a2e;
+}
+:root[data-theme="dark"] .helper-app .arrangement-selects label {
+  color: #9a9287;
+}
+:root[data-theme="dark"] .helper-app .arrangement-selects select {
+  background: #282725;
+}
+:root[data-theme="dark"] .helper-app .tuning-chip {
+  background: #322b22;
+  color: #dfba85;
+  border-color: #645039;
+}
+:root[data-theme="dark"] .helper-app .tuning-chip small,
+:root[data-theme="dark"] .helper-app .tuning-chip sup {
+  color: #a28d72;
+}
+:root[data-theme="dark"] .helper-app .arrangement-tuning > small,
+:root[data-theme="dark"] .helper-app .arrangement-tuning > span:first-child {
+  color: #8c7e6a;
+}
+:root[data-theme="dark"] .helper-app .segmented {
+  background: #191919;
+  border-color: #3d3d3d;
+}
+:root[data-theme="dark"] .helper-app .segmented button {
+  color: #888;
+}
+:root[data-theme="dark"] .helper-app .segmented button.active {
+  background: #45301a;
+  color: #e9b16c;
+}
+:root[data-theme="dark"] .helper-app .tab-toolbar > label {
+  color: #858585;
+}
+:root[data-theme="dark"] .helper-app .tab-output {
+  background: #1d1c1a;
+  border-color: #3f3930;
+  color: #b2a289;
+}
+:root[data-theme="dark"] .helper-app .event {
+  background: #30291f;
+  border-color: #4b3e2b;
+}
+:root[data-theme="dark"] .helper-app .event.selected {
+  background: #4b3218;
+  border-color: #bb833d;
+  box-shadow: none;
+}
+:root[data-theme="dark"] .helper-app .event span {
+  color: #e6b672;
+}
+:root[data-theme="dark"] .helper-app .event small {
+  color: #a38965;
+}
+:root[data-theme="dark"] .helper-app .event-inspector {
+  background: #2e271f;
+  border-color: #4a3c2b;
+}
+:root[data-theme="dark"] .helper-app .inspector-heading strong,
+:root[data-theme="dark"] .helper-app .inspector-fields > label {
+  color: #c1a47c;
+}
+:root[data-theme="dark"] .helper-app .empty-sequence {
+  background: #24211d;
+  border-color: #4c3e29;
+  color: #998366;
+}
+:root[data-theme="dark"] .helper-app .fret {
+  background: #3d3325;
+  border-color: #73634b;
+}
+:root[data-theme="dark"] .helper-app .fret:before,
+:root[data-theme="dark"] .helper-app .fret.double:after {
+  background: #938064;
+  box-shadow: none;
+}
+:root[data-theme="dark"] .helper-app .fret:hover {
+  background: #57442a;
+}
+:root[data-theme="dark"] .helper-app .fret span {
+  color: #bda37d;
+}
+:root[data-theme="dark"] .helper-app .fret.selected span {
+  color: #24190b;
+  background: #f0a94e;
+}
+:root[data-theme="dark"] .helper-app .string-label {
+  color: #b49d79;
+}
+:root[data-theme="dark"] .helper-app .fret-label,
+:root[data-theme="dark"] .helper-app .fret-caption {
+  color: #928575;
+}
+:root[data-theme="dark"] .cifra-preview {
+  background: #202020;
+  border-color: #383838;
+}
+:root[data-theme="dark"] .cifra-preview-bar {
+  border-color: #383838;
+}
+:root[data-theme="dark"] .cifra-preview-bar > span {
+  color: #a0a0a0;
+}
+:root[data-theme="dark"] .cifra-page-heading h2 {
+  color: #eee;
+}
+:root[data-theme="dark"] .cifra-page-heading h3 {
+  color: #ffa82a;
+}
+:root[data-theme="dark"] .cifra-page-heading > span {
+  color: #777;
+}
+:root[data-theme="dark"] .cifra-tone {
+  color: #aaa;
+}
+:root[data-theme="dark"] .cifra-tone strong {
+  color: #ffb13e;
+}
+:root[data-theme="dark"] .cifra-content {
+  color: #dcdcdc;
+}
+:root[data-theme="dark"] .cifra-part {
+  color: #bebebe;
+}
+:root[data-theme="dark"] .cifra-chord-line b {
+  color: #ffad2f;
+}
+:root[data-theme="dark"] .cifra-chord-line b:hover {
+  background: #ff9900;
+  color: #21170b;
+}
+:root[data-theme="dark"] .cifra-tab {
+  color: #c6c6c6;
+}
+:root[data-theme="dark"] .cifra-block:hover,
+:root[data-theme="dark"] .cifra-block.selected {
+  background: #2c261d;
+}
+:root[data-theme="dark"] .cifra-block.selected {
+  border-color: #46351e;
+}
+:root[data-theme="dark"] .cifra-preview-footer {
+  background: #222;
+  border-color: #393939;
+}
+:root[data-theme="dark"] .preview-placeholder {
+  color: #686868;
+}
+:root[data-theme="dark"] .cifra-preview.reading-mode {
+  border-color: #555;
+  box-shadow: 0 0 0 100vmax #000a;
+}
+:root[data-theme="dark"] .modal {
+  background: #242424;
+  color: #ddd;
+  border-color: #464646;
+}
+:root[data-theme="dark"] .modal::backdrop {
+  background: #000a;
+}
+:root[data-theme="dark"] .modal .field,
+:root[data-theme="dark"] .modal .muted {
+  color: #999;
+}
+:root[data-theme="dark"] .helper-app .export-options > button {
+  background: #2e281f;
+  border-color: #53432e;
+  color: #d4a162;
+}
+:root[data-theme="dark"] .helper-app .export-options > button:hover {
+  background: #3b2e1e;
+  border-color: #a27036;
+}
+:root[data-theme="dark"] .helper-app .export-options strong {
+  color: #e5b06a;
+}
+:root[data-theme="dark"] .helper-app .export-options small {
+  color: #a08e75;
+}
+:root[data-theme="dark"] .helper-app .destructive {
+  background: #b84e3b;
+  border-color: #b84e3b;
+  color: #fff;
+}
+:root[data-theme="dark"] .helper-app .danger:hover {
+  background: #4c2924 !important;
+  color: #f6aa98 !important;
+}
+:root[data-theme="dark"] .helper-app .toast {
+  background: #49331b;
+  border: 1px solid #8f622b;
+  color: #f6d4a2;
+}
+.cifra-lyric-row {
+  display: inline;
+}
+@media (max-width: 680px) {
+  .brand-logo {
+    width: 33px;
+    height: 33px;
+  }
+  .helper-app .brand {
+    font-size: 18px;
+  }
+  .helper-app .brand em {
+    font-size: 8px;
+  }
+  .theme-toggle {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+  }
+  .helper-app .storage-label {
+    display: none;
+  }
+  .helper-app .app-header {
+    gap: 10px;
+  }
+  :root[data-theme="dark"] .structure-sidebar.open {
+    background: #242424;
+    box-shadow: 0 12px 18px #0004;
+  }
+}
+
+.fret-selection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 10px;
+  padding: 13px 14px;
+  border: 1px solid #f0d8ba;
+  border-radius: 7px;
+  background: #fff9f1;
+}
+.fret-selection-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.fret-selection-notes strong {
+  font-size: 11px;
+  font-weight: 600;
+  color: #96612c;
+}
+.fret-selection-notes span {
+  font-size: 10px;
+  color: #ae906f;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.fret-selection > .text-button {
+  font-size: 10px;
+}
+.fret-selection > .primary {
+  font-size: 11px;
+  gap: 6px;
+  padding: 9px 11px;
+}
+.fret-selection kbd {
+  font: 9px var(--mono);
+  border: 1px solid #ffffff55;
+  background: #ffffff12;
+  color: inherit;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-left: 2px;
+}
+.helper-app .fret.existing span {
+  background: #fff3df;
+  color: #ae793d;
+  border: 1px dashed #cfa36f;
+}
+:root[data-theme="dark"] .fret-selection {
+  background: #302719;
+  border-color: #67502c;
+}
+:root[data-theme="dark"] .fret-selection-notes strong {
+  color: #e2b372;
+}
+:root[data-theme="dark"] .fret-selection-notes span {
+  color: #ac9475;
+}
+:root[data-theme="dark"] .fret-selection kbd {
+  border-color: #24180744;
+  background: #24180712;
+}
+:root[data-theme="dark"] .helper-app .fret.existing span {
+  background: #3d3121;
+  color: #c89d65;
+  border-color: #9c7947;
+}
+@media (max-width: 680px) {
+  .fret-selection {
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 10px;
+  }
+  .fret-selection-notes {
+    flex-basis: 100%;
+  }
+  .fret-selection > .primary {
+    margin-left: auto;
+  }
+}
+.combined-block-editor > section + section {
+  border-top: 1px solid var(--line);
+}
+.combined-block-editor > section > h3 {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9a734b;
+  margin: 0;
+  padding: 15px 18px 12px;
+  background: #fffaf2;
+  border-bottom: 1px solid #f0e7db;
+}
+:root[data-theme="dark"] .combined-block-editor > section > h3 {
+  background: #302719;
+  color: #dbb27a;
+  border-color: #4b3c29;
+}
+@media (max-width: 680px) {
+  .structure-add > button:nth-of-type(3) {
+    grid-column: 1/-1;
+  }
+}
+.library-bulk {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  margin: 0 0 24px;
+  border: 1px solid #ebdfd0;
+  border-radius: 8px;
+  background: #fffaf3;
+}
+.library-bulk > span {
+  font-size: 11px;
+  color: #9b7a55;
+  margin-right: auto;
+}
+.library-bulk .text-button {
+  font-size: 11px;
+}
+.library-bulk > .primary {
+  font-size: 11px;
+  padding: 9px 11px;
+}
+.song-card-selection {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 22px 0;
+  color: #a28b72;
+  font-size: 10px;
+  cursor: pointer;
+}
+.song-card-selection input {
+  accent-color: #d46b00;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+.song-card:has(.song-card-selection input:checked) {
+  border-color: #de923e;
+  box-shadow: 0 0 0 1px #f8c18144;
+}
+.import-replace {
+  display: flex;
+  align-items: start;
+  gap: 9px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #a06d32;
+  margin-top: 20px;
+}
+.import-replace input {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.import-duplicates {
+  border: 1px solid #eddfce;
+  border-radius: 6px;
+  padding: 4px 13px 12px;
+  background: #fffcf7;
+}
+.import-duplicates ul {
+  padding-left: 18px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #aa8761;
+  max-height: 180px;
+  overflow: auto;
+}
+:root[data-theme="dark"] .library-bulk {
+  background: #2b251c;
+  border-color: #4f3f29;
+}
+:root[data-theme="dark"] .library-bulk > span {
+  color: #baa080;
+}
+:root[data-theme="dark"] .song-card-selection {
+  color: #ac9274;
+}
+:root[data-theme="dark"] .song-card-selection input {
+  accent-color: #ff9900;
+}
+:root[data-theme="dark"] .import-replace {
+  color: #dcaf73;
+}
+:root[data-theme="dark"] .import-duplicates {
+  border-color: #51422d;
+  background: #2b261e;
+}
+:root[data-theme="dark"] .import-duplicates ul {
+  color: #bea686;
+}
+@media (max-width: 680px) {
+  .library-bulk {
+    gap: 10px;
+    padding: 12px;
+  }
+  .library-bulk > span {
+    flex-basis: 100%;
+  }
+  .library-bulk > .primary {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .library-bulk .text-button {
+    font-size: 10px;
+  }
+}
+.song-card {
+  position: relative;
+}
+.helper-app .song-card > a.song-card-open {
+  display: block;
+  padding: 0;
+}
+.song-card-main {
+  padding: 23px 22px 20px;
+}
+.song-card-footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 30px;
+  line-height: 1.5;
+}
+.song-card .song-delete {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+  z-index: 3;
+}
+.song-card .song-card-checkbox {
+  position: absolute;
+  right: 24px;
+  top: 25px;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  accent-color: #d77700;
+  cursor: pointer;
+}
+.song-selection-surface {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: inherit;
+}
+.helper-app .song-card.is-selected {
+  border-color: #d88b38;
+  box-shadow: 0 0 0 1px #f4bc7855;
+  background: #fff8ec;
+}
+.helper-app .song-card:focus-within {
+  border-color: #da8730;
+  box-shadow: 0 0 0 2px #ecab5b55;
+}
+:root[data-theme="dark"] .helper-app .song-card.is-selected {
+  background: #322819;
+  border-color: #c28b42;
+}
+:root[data-theme="dark"] .song-card .song-card-checkbox {
+  accent-color: #ff9900;
+}
+@media (max-width: 680px) {
+  .song-card-main {
+    padding: 20px;
+  }
+}

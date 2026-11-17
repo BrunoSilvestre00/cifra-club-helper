@@ -1,0 +1,1352 @@
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/RobotoMono-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/RobotoMono-Bold.ttf") format("truetype");
+}
+:root {
+  --green: #c95600;
+  --green-dark: #a94400;
+  --accent: #ff8000;
+  --line: #e8e8e8;
+  --mono: "Roboto Mono", Consolas, "Courier New", monospace;
+  color: #303030;
+  background: #fafafa;
+  font-family: Arial, "Segoe UI", sans-serif;
+}
+input,
+textarea,
+select {
+  color: #333;
+  border-color: #dedede;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #e5904b;
+  box-shadow: 0 0 0 3px #ff800016;
+}
+button:focus-visible,
+a:focus-visible {
+  outline-color: #e47719;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #df6900;
+}
+.helper-app .app-header {
+  height: 68px;
+  padding: 0 30px;
+  border-top: 3px solid #ff8000;
+  background: white;
+}
+.helper-app .brand {
+  font-size: 22px;
+  letter-spacing: -0.9px;
+  gap: 9px;
+  color: #303030;
+}
+.helper-app .brand em {
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #c75a00;
+  background: #fff1e2;
+  border: 1px solid #ffe2c3;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+.helper-app .brand-mark {
+  background: #f80;
+  color: white;
+  transform: none;
+  border-radius: 8px;
+}
+.helper-app .brand-mark svg {
+  transform: none;
+}
+.helper-app .workspace-name {
+  font-size: 12px;
+  color: #969696;
+}
+.helper-app .storage-label {
+  font-size: 10px;
+  color: #999;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.helper-app .storage-label > span {
+  background: #f80;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+.helper-app .secondary {
+  border-color: #ddd;
+  color: #606060;
+}
+.helper-app .secondary:hover,
+.helper-app .small-button:hover {
+  background: #fff7ee;
+  border-color: #edc29a;
+}
+.helper-app .primary {
+  background: #c95600;
+  border-color: #c95600;
+  color: #fff;
+  box-shadow: none;
+}
+.helper-app .primary:hover {
+  background: #ac4700;
+}
+.helper-app .text-button {
+  color: #bc5200;
+}
+.helper-app .text-button:hover {
+  color: #903d00;
+}
+.helper-app .icon-button {
+  color: #9a9a9a;
+}
+.helper-app .icon-button:hover {
+  background: #fff0e1;
+  color: #b95100;
+}
+.helper-app .eyebrow {
+  color: #aaa;
+}
+.helper-app .eyebrow.accent {
+  color: #c75b00;
+}
+.helper-app .count-badge {
+  color: #ae6f36;
+  background: #fff1e2;
+}
+.helper-app .small-button {
+  color: #7b6a5c;
+  border-color: #e6ded5;
+}
+.helper-app .destructive {
+  background: #a64637;
+  border-color: #a64637;
+}
+.helper-app .notice {
+  background: #fff3e4;
+  color: #965624;
+  border-color: #ffe2be;
+}
+.helper-app .toast {
+  background: #4d3521;
+}
+.helper-app .muted,
+.helper-app .inline-note {
+  color: #999;
+}
+.helper-app .field {
+  color: #777;
+}
+.helper-app .error {
+  color: #b23f29 !important;
+}
+.helper-app .library-heading h1 {
+  font-size: 36px;
+  letter-spacing: -1.3px;
+  color: #303030;
+}
+.helper-app .library-heading p {
+  color: #999;
+}
+.helper-app .search-field {
+  border-color: #dedede;
+  color: #999;
+}
+.library-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #999;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+.library-sort select {
+  font-size: 12px;
+  color: #555;
+  padding: 10px;
+  min-width: 175px;
+}
+.library-summary {
+  font-size: 11px;
+  color: #aaa;
+  margin: 0 0 20px;
+}
+.helper-app .library-toolbar {
+  margin-bottom: 18px;
+  gap: 14px;
+}
+.helper-app .library-toolbar > .secondary {
+  margin-left: auto;
+}
+.helper-app .song-card {
+  border-color: #e4e4e4;
+  box-shadow: none;
+}
+.helper-app .song-card:hover {
+  border-color: #efb980;
+  box-shadow: 0 4px 18px #d16b0010;
+}
+.helper-app .song-card-icon {
+  background: #fff1e1;
+  color: #d46b00;
+}
+.helper-app .song-card-top {
+  color: #dcb48d;
+}
+.card-artist {
+  display: block;
+  color: #ce6500;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.helper-app .song-card h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 21px;
+}
+.helper-app .song-card-tags > span {
+  color: #999;
+}
+.helper-app .song-card-footer {
+  color: #aaa;
+  border-color: #eee;
+}
+.helper-app .library-empty {
+  border-color: #e6ded5;
+  background: #fffdfa;
+  color: #aaa;
+}
+.helper-app .library-empty h2,
+.helper-app .library-empty h1 {
+  color: #555;
+}
+.helper-app .empty-music-icon {
+  background: #fff2e4;
+  color: #de7a20;
+  border-color: #ffe3c3;
+}
+.helper-app .library-notice {
+  color: #a06530;
+  background: #fff4e6;
+  border-color: #ffdfb5;
+}
+.helper-app .song-document-bar {
+  padding: 18px 28px;
+  background: #fff;
+  border-color: #e7e7e7;
+  min-height: 107px;
+}
+.helper-app .back-link {
+  color: #999;
+  font-size: 11px;
+}
+.helper-app .back-link:hover {
+  color: #bc5400;
+}
+.helper-app .song-title {
+  color: #333;
+  font-size: 27px;
+  font-weight: 600;
+}
+.helper-app .song-heading h1 {
+  margin-top: 10px;
+}
+.helper-app .editable-label > svg {
+  color: #d1915b;
+}
+.helper-app .editable-input {
+  border-color: #e7a567;
+}
+.helper-app .save-state,
+.helper-app .save-state svg {
+  color: #999;
+}
+.helper-app .status-dot {
+  background: #f1a24d;
+}
+.helper-app .song-actions {
+  gap: 8px;
+}
+.focused-workspace {
+  display: grid;
+  grid-template-columns: 215px minmax(360px, 1fr) minmax(350px, 32%);
+  align-items: start;
+  min-height: calc(100vh - 175px);
+  max-width: 2000px;
+  margin: auto;
+  background: #fafafa;
+}
+.structure-sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  height: calc(100vh - 175px);
+  max-height: 1050px;
+  border-right: 1px solid #e7e7e7;
+  background: #fff;
+  padding: 24px 11px 18px;
+  min-width: 0;
+}
+.structure-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 11px 23px;
+  gap: 7px;
+}
+.structure-title .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.2px;
+}
+.structure-title h2 {
+  font-size: 14px;
+  margin: 8px 0 0;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: -0.3px;
+}
+.structure-sidebar nav {
+  overflow: auto;
+  min-height: 0;
+}
+.structure-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  gap: 0;
+  margin-bottom: 5px;
+  min-height: 65px;
+  padding-right: 5px;
+}
+.structure-item.active {
+  border-color: #ffdab5;
+  background: #fff4e8;
+}
+.structure-item.active:after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  background: #f80;
+  border-radius: 0 3px 3px 0;
+}
+.structure-item.dragging {
+  opacity: 0.35;
+}
+.structure-item.drop-before:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -4px;
+  border-top: 2px solid #ed7a11;
+}
+.structure-item .block-grip {
+  width: 20px;
+  flex-shrink: 0;
+  color: #ccc;
+}
+.structure-select {
+  border: 0;
+  background: transparent;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  justify-content: start;
+  gap: 8px;
+  padding: 12px 0;
+  color: #888;
+}
+.structure-number {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #bbb;
+}
+.structure-item-label {
+  flex: 1;
+  min-width: 0;
+}
+.structure-item-label strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.structure-item-label small {
+  font-size: 9px;
+  display: block;
+  margin-top: 6px;
+  color: #aaa;
+}
+.structure-select > svg {
+  color: #db8644;
+}
+.structure-item.active .structure-item-label strong {
+  color: #bd5500;
+  font-weight: 600;
+}
+.structure-item.active .structure-number {
+  color: #dc8d4d;
+}
+.structure-end {
+  min-height: 15px;
+  text-align: center;
+  font-size: 8px;
+  color: #c08045;
+  padding: 3px;
+}
+.structure-end.drop-before {
+  background: #fff1e3;
+  border: 1px dashed #d88439;
+  border-radius: 5px;
+}
+.structure-empty {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #aaa;
+  padding: 10px;
+  text-align: center;
+}
+.structure-add {
+  display: grid;
+  gap: 8px;
+  padding: 12px 8px;
+}
+.structure-add > span {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #bbb;
+  margin-bottom: 3px;
+}
+.structure-add .secondary {
+  font-size: 11px;
+  justify-content: start;
+  padding: 10px 12px;
+  gap: 8px;
+}
+.structure-add .secondary > svg:last-of-type {
+  color: #c78449;
+}
+.structure-tip {
+  display: flex;
+  align-items: start;
+  gap: 6px;
+  color: #c6b5a7;
+  font-size: 9px;
+  padding: 25px 10px 0;
+  margin-top: auto;
+}
+.structure-tip p {
+  color: #aaa;
+  font-size: 10px;
+  margin: 0;
+  line-height: 1.8;
+}
+.focused-editor {
+  padding: 25px 26px 30px;
+  min-width: 0;
+}
+.song-properties {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #e7e7e7;
+  margin-bottom: 30px;
+}
+.song-properties > label {
+  font-size: 10px;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.song-properties .artist-field {
+  flex: 1;
+  min-width: 0;
+}
+.song-properties select {
+  width: 100%;
+  font-size: 12px;
+  padding: 9px;
+  background: #fff;
+}
+.song-properties input {
+  width: 62px;
+  font-size: 12px;
+  padding: 9px;
+}
+.song-properties > .icon-button {
+  margin-bottom: 3px;
+}
+.focused-block-intro {
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px;
+}
+.focused-block-intro .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.focused-block-intro h2 {
+  font-size: 25px;
+  letter-spacing: -0.7px;
+  font-weight: 600;
+  margin: 9px 0;
+  color: #383838;
+}
+.focused-block-intro p {
+  font-size: 11px;
+  color: #aaa;
+  margin: 0;
+  line-height: 1.6;
+}
+.helper-app .block-type {
+  background: #fff2e3;
+  color: #c26a20;
+  border-color: #ffe1c0;
+  white-space: nowrap;
+}
+.helper-app .block-type.arrangement {
+  color: #a9782a;
+  background: #fff5df;
+  border-color: #f3dfb7;
+}
+.focused-block {
+  border: 1px solid #e2e2e2;
+  border-radius: 9px;
+  background: #fff;
+  overflow: hidden;
+}
+.focused-block-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  background: #fdfdfd;
+}
+.focused-block-toolbar > label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  color: #999;
+  min-width: 0;
+}
+.focused-block-toolbar select {
+  font-size: 12px;
+  padding: 7px 9px;
+  min-width: 130px;
+  background: #fff;
+}
+.focused-block-toolbar .block-actions {
+  margin: 0;
+  gap: 3px;
+}
+.focused-editor-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 20px 0;
+  color: #aaa;
+  font-size: 9px;
+}
+.focused-editor-footer .text-button {
+  font-size: 10px;
+  gap: 5px;
+}
+.first-block {
+  padding: 45px 15px 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.first-block h2 {
+  font-size: 23px;
+  color: #555;
+  font-weight: 500;
+  margin: 12px 0;
+  letter-spacing: -0.6px;
+}
+.first-block p {
+  font-size: 12px;
+  color: #aaa;
+  max-width: 330px;
+  line-height: 1.8;
+}
+.first-block > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.first-block button {
+  font-size: 11px;
+  padding: 10px 14px;
+}
+.mobile-structure {
+  display: none;
+}
+.helper-app .refined-lyrics {
+  padding: 18px;
+}
+.helper-app .lyric-input {
+  border-color: #e8e8e8;
+  background: #fff;
+  font-size: 13px;
+  color: #444;
+}
+.helper-app .lyric-input::placeholder {
+  color: #b9b9b9;
+}
+.helper-app .lyric-preview-label span,
+.helper-app .lyric-preview-label small {
+  color: #aaa;
+}
+.helper-app .lyric-canvas {
+  color: #444;
+  font-size: 13px;
+}
+.helper-app .chord-chip {
+  border-color: #f7c692;
+  background: #fff3e3;
+  color: #c65700;
+  font-weight: 700;
+}
+.helper-app .chord-chip.chosen {
+  border-color: #e89642;
+  background: #ffe7c9;
+  box-shadow: 0 0 0 2px #ff800015;
+}
+.helper-app .syllables button {
+  color: #444;
+}
+.helper-app .syllables button:hover,
+.helper-app .syllables .caret-char {
+  background: #fff0dd;
+  box-shadow: -1px 0 #e49244;
+}
+.helper-app .syllables .end-char {
+  color: #ccc;
+}
+.helper-app .chord-tools {
+  border-color: #eee;
+  color: #999;
+}
+.helper-app .chord-tools .small-button {
+  background: #fff7ee;
+  color: #bd5e14;
+  border-color: #f3d4b3;
+}
+.helper-app .chord-tools form > input {
+  font-size: 12px;
+}
+.helper-app .position-label {
+  color: #999;
+}
+.helper-app .arrangement-setup {
+  background: #fffdfa;
+  border-color: #f1ebe4;
+  padding: 16px;
+}
+.helper-app .arrangement-selects label {
+  color: #999;
+}
+.helper-app .arrangement-selects select {
+  min-width: 130px;
+  font-size: 11px;
+}
+.helper-app .arrangement-tuning > span:first-child {
+  color: #bbb;
+}
+.helper-app .tuning-chip {
+  border-color: #eadfcf;
+  color: #a97841;
+  background: white;
+}
+.helper-app .tuning-chip small,
+.helper-app .tuning-chip sup,
+.helper-app .arrangement-tuning > small {
+  color: #baaa96;
+}
+.helper-app .tab-editor {
+  padding: 16px;
+}
+.helper-app .tab-toolbar > label {
+  color: #999;
+  font-size: 10px;
+}
+.helper-app .tab-toolbar select {
+  font-size: 11px;
+}
+.helper-app .segmented {
+  border-color: #e5e5e5;
+  background: #f4f4f4;
+}
+.helper-app .segmented button {
+  color: #999;
+  font-size: 10px;
+}
+.helper-app .segmented button.active {
+  color: #c0610c;
+  background: #fff;
+}
+.helper-app .event {
+  border-color: #e8e2d9;
+  background: #fdfbf8;
+  color: #999;
+}
+.helper-app .event.selected {
+  border-color: #e9ab62;
+  background: #fff5e6;
+  box-shadow: 0 0 0 1px #ffcf9a55;
+}
+.helper-app .event span {
+  color: #a2692d;
+}
+.helper-app .event small {
+  color: #b4a58f;
+}
+.helper-app .event-inspector {
+  border-color: #eee2d2;
+  background: #fffaf3;
+}
+.helper-app .inspector-heading strong {
+  color: #a47442;
+}
+.helper-app .inspector-fields > label {
+  color: #aa9275;
+}
+.helper-app .tab-output {
+  border-color: #e9e5df;
+  background: #fdfcf9;
+  color: #7b6f5e;
+  font-size: 11px;
+}
+.helper-app .fret.selected span {
+  background: #dc832e;
+}
+.helper-app .empty-sequence {
+  border-color: #e9dfd0;
+  color: #b8a88f;
+}
+.helper-app .fret-caption {
+  color: #aaa;
+  font-size: 8px;
+}
+.helper-app .fret-caption select {
+  border-color: #e8e8e8;
+}
+.cifra-preview {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: calc(100vh - 175px);
+  max-height: 1300px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-left: 1px solid #e5e5e5;
+  min-width: 0;
+}
+.cifra-preview-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 16px 20px;
+  flex-shrink: 0;
+}
+.cifra-preview-bar > span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 11px;
+  color: #999;
+}
+.cifra-preview-bar > span svg {
+  color: #e89245;
+}
+.cifra-preview-bar > div {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #aaa;
+  font-size: 10px;
+}
+.cifra-preview-bar .icon-button {
+  width: 24px;
+  height: 24px;
+}
+.cifra-page {
+  padding: 30px 25px 20px;
+  overflow: auto;
+  flex: 1;
+}
+.cifra-page-heading h2 {
+  font-family: Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #252525;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  overflow-wrap: anywhere;
+}
+.cifra-page-heading h3 {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+  font-weight: 600;
+  color: #c95600;
+  margin: 0 0 13px;
+  overflow-wrap: anywhere;
+}
+.cifra-page-heading > span {
+  font-size: 10px;
+  color: #aaa;
+}
+.cifra-tone {
+  font-size: 12px;
+  color: #555;
+  margin: 25px 0 22px;
+}
+.cifra-tone strong {
+  font-weight: 700;
+  color: #c95600;
+}
+.cifra-content {
+  font-family: var(--mono);
+  line-height: 1.65;
+  color: #242424;
+  font-variant-ligatures: none;
+  white-space: pre;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  tab-size: 1;
+}
+.cifra-block {
+  padding: 8px 0 18px;
+  cursor: pointer;
+  outline-offset: -1px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  min-width: max-content;
+}
+.cifra-block:hover {
+  background: #fffbf6;
+}
+.cifra-block.selected {
+  background: #fffbf6;
+  border-top-color: #fff0df;
+  border-bottom-color: #fff0df;
+}
+.cifra-block:focus-visible {
+  outline: 1px solid #ed994c;
+}
+.cifra-part {
+  color: #444;
+}
+.cifra-chord-line b {
+  color: #c45b00;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: inherit;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.cifra-chord-line b:hover {
+  background: #ff8000;
+  color: #fff;
+}
+.cifra-tab {
+  font-size: inherit;
+  color: #333;
+}
+.cifra-lyric-row {
+  display: block;
+}
+.cifra-preview-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  align-items: center;
+  border-top: 1px solid #eee;
+  background: #fff;
+  flex-shrink: 0;
+  gap: 8px;
+}
+.cifra-preview-footer .primary {
+  width: 100%;
+  font-size: 11px;
+}
+.cifra-preview-footer .text-button {
+  font-size: 10px;
+}
+.preview-placeholder {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #bbb;
+  white-space: normal;
+  line-height: 1.8;
+  padding: 20px 0;
+}
+.cifra-preview.reading-mode {
+  position: fixed;
+  inset: 20px;
+  z-index: 30;
+  max-width: 850px;
+  height: calc(100vh - 40px);
+  max-height: none;
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 0 100vmax #0006;
+}
+.cifra-preview.reading-mode .cifra-page {
+  padding-inline: 45px;
+}
+.helper-app .export-options > button {
+  background: #fffcf8;
+  border-color: #eddfd0;
+  color: #cb8b4e;
+}
+.helper-app .export-options > button:hover {
+  border-color: #edab68;
+  background: #fff5e8;
+}
+.helper-app .export-options strong {
+  color: #845d37;
+}
+.helper-app .export-options small {
+  color: #b39c83;
+}
+.helper-app .modal .field {
+  color: #999;
+}
+.helper-app .modal summary {
+  color: #bd651b;
+}
+.helper-app .modal details input {
+  font-size: 12px;
+}
+.helper-app .modal .tuning-row {
+  color: #aa8965;
+}
+@media (min-width: 1600px) {
+  .focused-workspace {
+    grid-template-columns: 240px minmax(0, 1fr) 36%;
+  }
+  .focused-editor {
+    padding: 30px 38px;
+  }
+  .cifra-page {
+    padding: 36px;
+  }
+  .focused-block-intro h2 {
+    font-size: 29px;
+  }
+  .structure-sidebar {
+    padding: 28px 16px;
+  }
+  .structure-title h2 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1190px) {
+  .focused-workspace {
+    grid-template-columns: 190px minmax(340px, 1fr) 35%;
+  }
+  .focused-editor {
+    padding: 23px 18px;
+  }
+  .structure-title {
+    padding-inline: 7px;
+  }
+  .structure-title h2 {
+    font-size: 12px;
+  }
+  .structure-item-label strong {
+    font-size: 11px;
+  }
+  .structure-item-label small {
+    font-size: 8px;
+  }
+  .cifra-page {
+    padding: 26px 18px;
+  }
+  .cifra-page-heading h2 {
+    font-size: 24px;
+  }
+  .cifra-preview-bar {
+    padding: 15px;
+  }
+  .focused-block-toolbar {
+    padding: 12px;
+    gap: 8px;
+  }
+  .focused-block-toolbar > label {
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+  .focused-block-toolbar select {
+    min-width: 125px;
+  }
+  .helper-app .arrangement-selects {
+    gap: 8px;
+  }
+  .helper-app .arrangement-selects > label {
+    flex: 1;
+    min-width: 0;
+  }
+  .helper-app .arrangement-selects select {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .helper-app .song-properties {
+    gap: 10px;
+  }
+  .library-sort > span {
+    display: none;
+  }
+  .helper-app .library-toolbar .search-field {
+    max-width: 360px;
+  }
+}
+@media (max-width: 980px) {
+  .focused-workspace {
+    grid-template-columns: 195px minmax(0, 1fr);
+  }
+  .structure-sidebar {
+    grid-row: span 2;
+    position: sticky;
+    height: calc(100vh - 175px);
+    max-height: none;
+  }
+  .focused-editor {
+    padding: 25px;
+  }
+  .cifra-preview {
+    grid-column: 2;
+    position: static;
+    height: auto;
+    max-height: none;
+    min-height: 500px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .cifra-page {
+    max-height: 650px;
+    padding: 30px;
+  }
+  .cifra-preview-bar {
+    padding: 18px 25px;
+  }
+  .cifra-preview-footer {
+    max-width: 100%;
+    padding: 18px 25px;
+  }
+  .cifra-preview-footer > .primary {
+    max-width: 380px;
+  }
+  .helper-app .song-actions .save-state {
+    display: none;
+  }
+  .helper-app .workspace-name {
+    display: none;
+  }
+  .helper-app .library-toolbar {
+    flex-wrap: wrap;
+  }
+  .helper-app .library-toolbar .search-field {
+    max-width: none;
+  }
+  .library-sort select {
+    min-width: 160px;
+  }
+}
+@media (max-width: 680px) {
+  .helper-app .app-header {
+    height: 58px;
+    padding: 0 15px;
+    border-top-width: 3px;
+  }
+  .helper-app .brand {
+    font-size: 19px;
+  }
+  .helper-app .brand em {
+    font-size: 9px;
+    padding: 3px 4px;
+  }
+  .helper-app .brand-mark {
+    width: 29px;
+    height: 29px;
+  }
+  .helper-app .brand-mark svg {
+    width: 19px;
+  }
+  .helper-app .storage-label {
+    font-size: 8px;
+  }
+  .helper-app .song-document-bar {
+    padding: 16px;
+  }
+  .helper-app .song-title {
+    font-size: 24px;
+  }
+  .helper-app .song-actions .secondary,
+  .helper-app .song-actions .primary {
+    font-size: 11px;
+    padding: 8px 11px;
+  }
+  .focused-workspace {
+    display: block;
+    position: relative;
+  }
+  .structure-sidebar {
+    display: none;
+  }
+  .structure-sidebar.open {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 12px 18px #0001;
+    min-height: 250px;
+    height: auto;
+    max-height: 70vh;
+    padding: 20px 15px;
+  }
+  .structure-sidebar.open .structure-tip {
+    display: none;
+  }
+  .structure-sidebar.open .structure-title {
+    padding-bottom: 15px;
+  }
+  .structure-sidebar.open .structure-title h2 {
+    font-size: 15px;
+  }
+  .structure-sidebar.open .structure-item-label strong {
+    font-size: 13px;
+  }
+  .structure-sidebar.open .structure-item-label small {
+    font-size: 10px;
+  }
+  .structure-sidebar.open .structure-add {
+    grid-template-columns: 1fr 1fr;
+  }
+  .structure-sidebar.open .structure-add > span {
+    grid-column: span 2;
+  }
+  .structure-sidebar.open .structure-add button {
+    justify-content: center;
+  }
+  .mobile-structure {
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 11px;
+    width: 100%;
+    justify-content: start;
+    background: #fff;
+  }
+  .focused-editor {
+    padding: 19px 14px 15px;
+  }
+  .song-properties {
+    margin-bottom: 24px;
+    padding-bottom: 19px;
+    gap: 12px;
+  }
+  .song-properties input {
+    width: 55px;
+  }
+  .song-properties select {
+    font-size: 12px;
+    padding: 9px;
+  }
+  .focused-block-intro {
+    margin-bottom: 17px;
+  }
+  .focused-block-intro h2 {
+    font-size: 23px;
+  }
+  .focused-block-intro p {
+    font-size: 10px;
+  }
+  .focused-block-intro .eyebrow {
+    font-size: 7px;
+  }
+  .focused-block-intro > .block-type {
+    font-size: 10px;
+    padding: 5px 7px;
+  }
+  .focused-block-toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px;
+  }
+  .focused-block-toolbar > label {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 9px;
+    flex: 1;
+  }
+  .focused-block-toolbar select {
+    min-width: 115px;
+    font-size: 11px;
+  }
+  .focused-block-toolbar .block-actions {
+    width: auto;
+    border: 0;
+    margin-left: auto;
+    padding: 0;
+  }
+  .focused-block-toolbar .block-actions .icon-button {
+    width: 25px;
+  }
+  .helper-app .refined-lyrics {
+    padding: 15px 12px;
+  }
+  .helper-app .lyric-preview-label {
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+  .helper-app .lyric-canvas {
+    font-size: 12px;
+  }
+  .helper-app .lyric-input {
+    font-size: 13px;
+  }
+  .helper-app .arrangement-setup {
+    padding: 14px 12px;
+  }
+  .helper-app .tab-editor {
+    padding: 14px 12px;
+  }
+  .focused-editor-footer {
+    font-size: 8px;
+    flex-wrap: wrap;
+  }
+  .focused-editor-footer .text-button {
+    font-size: 9px;
+  }
+  .first-block {
+    padding: 25px 15px 40px;
+  }
+  .first-block h2 {
+    font-size: 22px;
+  }
+  .first-block p {
+    font-size: 12px;
+  }
+  .first-block > div {
+    flex-direction: column;
+    width: 100%;
+    max-width: 270px;
+  }
+  .cifra-preview {
+    min-height: 450px;
+  }
+  .cifra-page {
+    padding: 27px 20px;
+    max-height: 580px;
+  }
+  .cifra-page-heading h2 {
+    font-size: 27px;
+  }
+  .cifra-page-heading h3 {
+    font-size: 18px;
+  }
+  .cifra-preview-bar {
+    padding: 16px 20px;
+  }
+  .cifra-preview-footer {
+    padding: 16px 20px;
+  }
+  .cifra-preview.reading-mode {
+    inset: 10px;
+    height: calc(100vh - 20px);
+    border-radius: 7px;
+  }
+  .cifra-preview.reading-mode .cifra-page {
+    padding-inline: 20px;
+    max-height: none;
+  }
+  .helper-app .library-heading h1 {
+    font-size: 29px;
+  }
+  .helper-app .library-heading p {
+    font-size: 12px;
+  }
+  .helper-app .library-toolbar .search-field {
+    flex-basis: 100%;
+  }
+  .library-sort {
+    flex: 1;
+    gap: 6px;
+  }
+  .library-sort select {
+    width: 100%;
+    min-width: 0;
+    font-size: 10px;
+    padding: 9px;
+  }
+  .library-sort > svg {
+    width: 14px;
+  }
+  .helper-app .library-toolbar > .secondary {
+    font-size: 10px;
+    padding: 8px 9px;
+  }
+  .helper-app .library-summary {
+    font-size: 10px;
+  }
+  .helper-app .song-card h2 {
+    font-size: 21px;
+  }
+  .helper-app .card-artist {
+    font-size: 12px;
+  }
+}
