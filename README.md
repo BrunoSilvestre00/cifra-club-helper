@@ -1,8 +1,10 @@
-# Cifra Club Helper
+<p align="center">
+  <a href="https://brunosilvestre00.github.io/cifra-club-helper/">
+    <img src="public/assets/logo.png" alt="Logo do Cifra Club Helper" width="160" />
+  </a>
+</p>
 
-<img src="public/assets/logo.png" alt="Logo do Cifra Club Helper" width="160" />
-
-[Acessar o Cifra Club Helper](https://brunosilvestre00.github.io/cifra-club-helper/)
+<h1 align="center">Cifra Club Helper</h1>
 
 Editor visual para preparar cifras e tablaturas para o Cifra Club. Organize músicas por artista e trabalhe em blocos de **Letra**, **Arranjo** ou **Arranjo com letra**.
 
