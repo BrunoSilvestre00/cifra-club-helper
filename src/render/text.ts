@@ -103,7 +103,7 @@ export function renderTab(
     .join("\n\n");
 }
 export function songSegments(song: Song) {
-  return song.sections.flatMap((section) =>
+  const segments = song.sections.flatMap((section) =>
     section.blocks.map((block, index) => ({
       section,
       block,
@@ -116,6 +116,12 @@ export function songSegments(song: Song) {
           : null,
     })),
   );
+  return segments.map((segment, index) => ({
+    ...segment,
+    heading: segment.heading === segments[index - 1]?.heading
+      ? null
+      : segment.heading,
+  }));
 }
 export function renderSong(song: Song) {
   return [
