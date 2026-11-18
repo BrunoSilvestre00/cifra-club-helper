@@ -249,6 +249,16 @@ export const presets: Record<string, Instrument> = {
       { label: "B", pitches: ["B2", "B3"] },
     ],
   },
+  violaDSharp: {
+    name: "Viola · Cebolão em D#",
+    courses: [
+      { label: "D#", pitches: ["D#4", "D#4"] },
+      { label: "A#", pitches: ["A#3", "A#3"] },
+      { label: "G", pitches: ["G3", "G4"] },
+      { label: "D#", pitches: ["D#3", "D#4"] },
+      { label: "A#", pitches: ["A#2", "A#3"] },
+    ],
+  },
   violaD: {
     name: "Viola · Cebolão em D",
     courses: [
