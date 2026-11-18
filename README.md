@@ -54,7 +54,8 @@ Os dados pertencem à origem e ao perfil do navegador. Ao trocar de computador, 
 - **Arranjo** usa o braço interativo. Selecione uma ou mais posições em cordas diferentes e confirme com **Adicionar** ou **Enter** com o foco no braço. Uma casa por corda; clicar de novo desmarca. Todas as notas entram juntas, permitindo duetos.
 - **Novo evento** insere depois do evento aberto; **No evento selecionado** acrescenta notas às cordas escolhidas. Havendo eventos, um permanece aberto. Excluir seleciona o anterior; excluir o primeiro seleciona o novo primeiro.
 - **Arranjo com letra** reúne os dois editores no mesmo bloco. Na saída, a tablatura aparece antes da letra e dos acordes, sob um único título de parte.
-- Cada arranjo tem instrumento/afinação próprios: violão de seis cordas ou viola de dez cordas em cinco ordens duplas. Há presets Cebolão E/D e afinação personalizada. Técnicas, pausas, espaçamento e frases são editáveis.
+- Cada arranjo tem instrumento/afinação próprios: violão de seis cordas ou viola de dez cordas em cinco ordens duplas. Há presets Cebolão E/D#/D, Rio Acima e Rio Abaixo, além de afinação personalizada. Técnicas, pausas, espaçamento e frases são editáveis.
+- Para técnicas, selecione as posições iniciais, clique em uma tag acima do braço e escolha o destino em cada corda. Cada nota pode ter seu próprio destino e técnica; Slide calcula `/` ou `\`, e Hammer-on / Pull-off calcula `h` ou `p`. Os destinos têm contorno tracejado e o resumo mostra o resultado pendente. Somente **Adicionar** ou Enter confirma o evento.
 - A prévia completa fica sempre visível e usa Roboto Mono, com acordes em negrito laranja. Clicar em um trecho seleciona seu bloco. Exporte TXT, copie o resultado ou baixe JSON individual pelo botão Exportar.
 - O salvamento automático ocorre após 700 ms sem alterações. Atalhos: Ctrl/⌘+S salva, Ctrl/⌘+Z desfaz, Ctrl/⌘+Shift+Z ou Ctrl+Y refaz. Até 100 operações de histórico na sessão.
 - O braço mostra as casas 0 a 19, com rolagem horizontal quando necessário. O seletor de faixa também permite acessar as casas 19 a 36.
@@ -82,7 +83,7 @@ npm test
 npm run build:pages
 ```
 
-São 55 testes Vitest. Cobrem renderização, duetos, exclusão/seleção de eventos, blocos combinados, importação/exportação de várias músicas, chaves duplas, transações, migração e persistência no IndexedDB. `fake-indexeddb` é usado apenas nos testes.
+São 58 testes Vitest. Cobrem renderização, duetos com destinos independentes, direção automática das técnicas, exclusão/seleção de eventos, blocos combinados, importação/exportação de várias músicas, chaves duplas, transações, migração e persistência no IndexedDB. `fake-indexeddb` é usado apenas nos testes.
 
 - `src/domain`: modelo musical estruturado e validado com Zod, artistas, partes e formato dos backups.
 - `src/persistence`: IndexedDB, índices únicos, importação transacional e migração.

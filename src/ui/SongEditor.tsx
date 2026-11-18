@@ -1,4 +1,4 @@
-import { useEffect, useState, type DragEvent } from "react";
+import { useEffect, useRef, useState, type DragEvent } from "react";
 import {
   ArrowLeft,
   Plus,
@@ -87,11 +87,27 @@ export default function SongEditor({
     [dragging, setDragging] = useState<string | null>(null),
     [over, setOver] = useState(""),
     [sidebarOpen, setSidebarOpen] = useState(false);
+  const documentBar = useRef<HTMLDivElement>(null);
+  const workspace = useRef<HTMLDivElement>(null);
   useEffect(() => {
     load(project);
     setLoaded(true);
   }, [project.id, load]);
   usePersistence(loaded, onSaved);
+  useEffect(() => {
+    const bar = documentBar.current;
+    if (!bar) return;
+    const updateHeight = () => {
+      workspace.current?.style.setProperty(
+        "--song-toolbar-height",
+        `${bar.getBoundingClientRect().height}px`,
+      );
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, [loaded]);
   useEffect(() => {
     if (!loaded) return;
     return setNavigationGuard(async () => {
@@ -242,19 +258,21 @@ export default function SongEditor({
     );
   return (
     <>
-      <div className="song-document-bar">
+      <div className="song-back-navigation">
+        <a
+          href={appHref("/")}
+          className="back-link"
+          onClick={(e) => {
+            e.preventDefault();
+            void navigate("/");
+          }}
+        >
+          <ArrowLeft size={15} />
+          Minhas músicas
+        </a>
+      </div>
+      <div className="song-document-bar" ref={documentBar}>
         <div className="song-heading">
-          <a
-            href={appHref("/")}
-            className="back-link"
-            onClick={(e) => {
-              e.preventDefault();
-              void navigate("/");
-            }}
-          >
-            <ArrowLeft size={15} />
-            Minhas músicas
-          </a>
           <h1>
             <EditableText
               className="song-title"
@@ -338,7 +356,7 @@ export default function SongEditor({
           </button>
         </div>
       )}
-      <div className="focused-workspace without-preview">
+      <div className="focused-workspace without-preview" ref={workspace}>
         <aside className={"structure-sidebar " + (sidebarOpen ? "open" : "")}>
           <div className="structure-title">
             <div>

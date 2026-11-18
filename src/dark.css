@@ -513,10 +513,6 @@
 :root[data-theme="dark"] .preview-placeholder {
   color: #686868;
 }
-:root[data-theme="dark"] .cifra-preview.reading-mode {
-  border-color: #555;
-  box-shadow: 0 0 0 100vmax #000a;
-}
 :root[data-theme="dark"] .modal {
   background: #242424;
   color: #ddd;

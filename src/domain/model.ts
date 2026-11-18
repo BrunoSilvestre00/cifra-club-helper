@@ -269,6 +269,26 @@ export const presets: Record<string, Instrument> = {
       { label: "A", pitches: ["A2", "A3"] },
     ],
   },
+  violaRioAcima: {
+    name: "Viola · Rio Acima",
+    courses: [
+      { label: "E", pitches: ["E4", "E4"] },
+      { label: "C", pitches: ["C4", "C4"] },
+      { label: "G", pitches: ["G3", "G4"] },
+      { label: "E", pitches: ["E3", "E4"] },
+      { label: "C", pitches: ["C3", "C4"] },
+    ],
+  },
+  violaRioAbaixo: {
+    name: "Viola · Rio Abaixo",
+    courses: [
+      { label: "D", pitches: ["D4", "D4"] },
+      { label: "B", pitches: ["B3", "B3"] },
+      { label: "G", pitches: ["G3", "G4"] },
+      { label: "D", pitches: ["D3", "D4"] },
+      { label: "G", pitches: ["G2", "G3"] },
+    ],
+  },
 };
 export const newLyric = (text = ""): Lyric => ({
   id: uid(),

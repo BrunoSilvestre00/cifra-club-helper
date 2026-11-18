@@ -9,8 +9,6 @@ import {
 } from "lucide-react";
 import {
   uid,
-  techniques,
-  techniqueNames,
   type Tab,
   type Technique,
   type Note,
@@ -18,12 +16,16 @@ import {
 } from "../domain/model";
 import { renderNote, renderTab } from "../render/text";
 import {
-  toggleFret,
+  selectFret,
+  techniqueTools,
+  toolForTechnique,
+  techniqueBetween,
   selectedEvent,
   eventAfterRemoval,
   notesFromPositions,
   addNotes,
-  type FretPosition,
+  type DraftPosition,
+  type TechniqueTool,
 } from "../domain/arrangement";
 import { useEditor } from "../store/editor";
 
@@ -36,11 +38,10 @@ export default function TabEditor({ tab }: { tab: Tab }) {
       tab.events[0]?.id ?? null,
     ),
     [noteId, setNoteId] = useState<string | null>(null);
-  const [draft, setDraft] = useState<FretPosition[]>([]);
+  const [draft, setDraft] = useState<DraftPosition[]>([]);
   const positions = draft.filter((p) => p.course < instrument.courses.length);
   const [mode, setMode] = useState<"sequence" | "simultaneous">("sequence"),
-    [technique, setTechnique] = useState<Technique>("none"),
-    [target, setTarget] = useState(7),
+    [technique, setTechnique] = useState<TechniqueTool>("none"),
     [startFret, setStartFret] = useState(0);
   const visibleFretCount = Math.min(20, 37 - startFret);
   const [feedback, setFeedback] = useState(
@@ -54,7 +55,7 @@ export default function TabEditor({ tab }: { tab: Tab }) {
     });
   const commit = () => {
     if (!positions.length) return;
-    const notes = notesFromPositions(positions, technique, Math.trunc(target));
+    const notes = notesFromPositions(positions);
     let next: string | null = null;
     mutate((events) => {
       next = addNotes(events, notes, event?.id ?? null, mode);
@@ -62,6 +63,7 @@ export default function TabEditor({ tab }: { tab: Tab }) {
     setSelected(next);
     setNoteId(notes[0].id);
     setDraft([]);
+    setTechnique("none");
     setFeedback(
       `${notes.length === 1 ? "Nota adicionada" : `${notes.length} notas adicionadas juntas`}${mode === "simultaneous" && event ? " ao evento selecionado" : " em um novo evento"}.`,
     );
@@ -79,6 +81,10 @@ export default function TabEditor({ tab }: { tab: Tab }) {
       )
         return;
       Object.assign(n, patch);
+      if (targeted(n.technique) && n.target !== undefined) {
+        n.technique = techniqueBetween(toolForTechnique(n.technique), n.fret, n.target);
+        if (n.technique === "none") delete n.target;
+      }
     });
   };
   const move = (direction: number) => {
@@ -127,36 +133,25 @@ export default function TabEditor({ tab }: { tab: Tab }) {
             No evento selecionado
           </button>
         </div>
-        <label>
-          Técnica{" "}
-          <select
-            aria-label="Técnica para novas notas"
-            value={technique}
-            onChange={(e) => setTechnique(e.target.value as Technique)}
-          >
-            {techniques.map((t) => (
-              <option key={t} value={t}>
-                {techniqueNames[t]}
-              </option>
-            ))}
-          </select>
-        </label>
-        {targeted(technique) && (
-          <label>
-            Destino{" "}
-            <input
-              aria-label="Casa destino para novas notas"
-              type="number"
-              min={0}
-              max={36}
-              value={target}
-              onChange={(e) =>
-                setTarget(Math.max(0, Math.min(36, Number(e.target.value))))
-              }
-            />
-          </label>
-        )}
       </div>
+      <div className="technique-tags" role="group" aria-label="Técnica para novas notas">
+        {(Object.entries(techniqueTools) as [TechniqueTool, string][]).map(([key, label]) => (
+          <button
+            key={key}
+            className="technique-tag"
+            aria-pressed={technique === key}
+            onClick={() => setTechnique(key)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <p className="technique-help" aria-live="polite">
+        {["slide", "legato", "bend"].includes(technique)
+          ? "Clique no destino de cada corda selecionada. Sem posição inicial? O primeiro clique define o início; o próximo, o destino."
+          : "Selecione as posições iniciais. Para ligar casas, escolha Slide ou Hammer-on / Pull-off e clique no destino de cada corda."}
+        {" "}Só Adicionar ou Enter confirma as notas.
+      </p>
       <div className="fretboard-scroll">
         <div
           className="fretboard"
@@ -185,13 +180,16 @@ export default function TabEditor({ tab }: { tab: Tab }) {
                 const active = positions.some(
                   (p) => p.course === c && p.fret === fret,
                 );
+                const destination = positions.some(
+                  (p) => p.course === c && p.target === fret,
+                );
                 return (
                   <button
                     key={i}
                     className={
                       "fret " +
                       (course.pitches.length === 2 ? "double " : "") +
-                      (active ? "selected" : existing ? "existing" : "")
+                      (active ? "selected" : destination ? "destination" : existing ? "existing" : "")
                     }
                     style={
                       {
@@ -199,15 +197,15 @@ export default function TabEditor({ tab }: { tab: Tab }) {
                       } as React.CSSProperties
                     }
                     aria-label={`${course.pitches.length === 2 ? "Ordem" : "Corda"} ${c + 1} ${course.label}, casa ${fret}`}
-                    aria-pressed={active}
+                    aria-pressed={active || destination}
                     onClick={() =>
                       setDraft((current) =>
-                        toggleFret(current, { course: c, fret }),
+                        selectFret(current, { course: c, fret }, technique),
                       )
                     }
                   >
                     <span>
-                      {active || existing ? fret : fret === 0 ? "0" : ""}
+                      {active || destination || existing ? fret : fret === 0 ? "0" : ""}
                     </span>
                   </button>
                 );
@@ -239,7 +237,7 @@ export default function TabEditor({ tab }: { tab: Tab }) {
             {positions
               .map(
                 (p) =>
-                  `${p.course + 1}ª ${instrument.courses[p.course].label} · casa ${p.fret}`,
+                  `${p.course + 1}ª ${instrument.courses[p.course].label} · ${renderNote({ ...p, id: "draft", technique: p.technique ?? "none" }, song.symbols)}`,
               )
               .join("  +  ") ||
               "Uma posição por corda. Clique novamente para desmarcar."}
@@ -248,7 +246,10 @@ export default function TabEditor({ tab }: { tab: Tab }) {
         <button
           className="text-button"
           disabled={!positions.length}
-          onClick={() => setDraft([])}
+          onClick={() => {
+            setDraft([]);
+            setTechnique("none");
+          }}
         >
           Limpar
         </button>
@@ -490,20 +491,22 @@ export default function TabEditor({ tab }: { tab: Tab }) {
                   Técnica
                   <select
                     aria-label="Técnica da nota selecionada"
-                    value={note.technique}
+                    value={toolForTechnique(note.technique)}
                     onChange={(e) => {
-                      const t = e.target.value as Technique;
+                      const tool = e.target.value as TechniqueTool;
+                      const target = note.target ?? (note.fret === 36 ? 35 : note.fret + 1);
+                      const t = techniqueBetween(tool, note.fret, target);
                       changeNote({
                         technique: t,
                         target: targeted(t)
-                          ? (note.target ?? Math.min(36, note.fret + 1))
+                          ? target
                           : undefined,
                       });
                     }}
                   >
-                    {techniques.map((t) => (
-                      <option key={t} value={t}>
-                        {techniqueNames[t]}
+                    {Object.entries(techniqueTools).map(([key, label]) => (
+                      <option key={key} value={key}>
+                        {label}
                       </option>
                     ))}
                   </select>

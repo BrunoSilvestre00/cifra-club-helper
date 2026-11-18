@@ -251,10 +251,16 @@ input[type="radio"] {
   border-color: #ffdfb5;
 }
 .helper-app .song-document-bar {
-  padding: 18px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 12px 28px;
   background: #fff;
   border-color: #e7e7e7;
-  min-height: 107px;
+  min-height: 64px;
+}
+.song-back-navigation {
+  padding: 14px 28px 6px;
 }
 .helper-app .back-link {
   color: #999;
@@ -269,7 +275,7 @@ input[type="radio"] {
   font-weight: 600;
 }
 .helper-app .song-heading h1 {
-  margin-top: 10px;
+  margin: 0;
 }
 .helper-app .editable-label > svg {
   color: #d1915b;
@@ -927,21 +933,6 @@ input[type="radio"] {
   line-height: 1.8;
   padding: 20px 0;
 }
-.cifra-preview.reading-mode {
-  position: fixed;
-  inset: 20px;
-  z-index: 30;
-  max-width: 850px;
-  height: calc(100vh - 40px);
-  max-height: none;
-  margin: auto;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 0 100vmax #0006;
-}
-.cifra-preview.reading-mode .cifra-page {
-  padding-inline: 45px;
-}
 .helper-app .export-options > button {
   background: #fffcf8;
   border-color: #eddfd0;
@@ -1305,15 +1296,6 @@ input[type="radio"] {
   .cifra-preview-footer {
     padding: 16px 20px;
   }
-  .cifra-preview.reading-mode {
-    inset: 10px;
-    height: calc(100vh - 20px);
-    border-radius: 7px;
-  }
-  .cifra-preview.reading-mode .cifra-page {
-    padding-inline: 20px;
-    max-height: none;
-  }
   .helper-app .library-heading h1 {
     font-size: 29px;
   }
@@ -1354,6 +1336,62 @@ input[type="radio"] {
 .focused-workspace.without-preview {
   grid-template-columns: 215px minmax(0, 1fr);
 }
+@media (min-width: 681px) {
+  .without-preview .structure-sidebar {
+    top: var(--song-toolbar-height, 64px);
+    max-height: calc(100dvh - var(--song-toolbar-height, 64px));
+  }
+}
+@media (max-width: 680px) {
+  .helper-app .song-document-bar {
+    padding: 10px 16px;
+    gap: 8px;
+  }
+  .song-back-navigation {
+    padding: 12px 16px 6px;
+  }
+}
+.technique-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 14px 0 8px;
+}
+.helper-app .technique-tag {
+  border: 1px solid #8885;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  color: inherit;
+  background: transparent;
+}
+.helper-app .technique-tag:hover {
+  background: #f5822015;
+  border-color: #f58220;
+}
+.helper-app .technique-tag[aria-pressed="true"] {
+  color: #fff;
+  background: #bb4d00;
+  border-color: #bb4d00;
+}
+.technique-help {
+  font-size: 12px;
+  line-height: 1.6;
+  color: inherit;
+  opacity: .8;
+  margin: 0 0 12px;
+}
+.helper-app .fret.destination span {
+  color: #bb4d00;
+  background: #fff4e9;
+  border: 2px dashed #bb4d00;
+}
+:root[data-theme="dark"] .helper-app .fret.destination span {
+  color: #ffc489;
+  background: #422b1a;
+  border-color: #ffa34d;
+}
 :root:has(dialog.preview-drawer[open]),
 body:has(dialog.preview-drawer[open]) {
   overflow: hidden;
@@ -1385,8 +1423,7 @@ body:has(dialog.preview-drawer[open]) {
   padding: 16px 20px;
   border-bottom: 1px solid #8883;
 }
-.preview-drawer .cifra-preview,
-.preview-drawer .cifra-preview.reading-mode {
+.preview-drawer .cifra-preview {
   position: static;
   align-self: stretch;
   flex: 1;

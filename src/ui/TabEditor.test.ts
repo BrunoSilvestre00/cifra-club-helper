@@ -23,4 +23,7 @@ it("abre o primeiro evento automaticamente e não marca as notas existentes como
   expect(html).toContain("casa 19");
   expect(html).not.toContain("casa 20");
   expect(html).toContain("0–19");
+  expect(html).toContain('class="technique-tag" aria-pressed="false">Slide</button>');
+  expect(html).toContain("Hammer-on / Pull-off");
+  expect(html).not.toContain("Casa destino para novas notas");
 });

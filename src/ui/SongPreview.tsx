@@ -72,11 +72,10 @@ export default function SongPreview({
   onSelect: (section: string, block: string) => void;
   onCopy: () => void;
 }) {
-  const [size, setSize] = useState(14),
-    [zoom, setZoom] = useState(false);
+  const [size, setSize] = useState(14);
   const blocks = songSegments(song);
   return (
-    <aside className={"cifra-preview " + (zoom ? "reading-mode" : "")}>
+    <aside className="cifra-preview">
       <div className="cifra-preview-bar">
         <span>
           <FileText size={15} />
@@ -158,9 +157,6 @@ export default function SongPreview({
         <button className="primary" onClick={onCopy}>
           <Copy size={15} />
           Copiar cifra completa
-        </button>
-        <button className="text-button" onClick={() => setZoom(!zoom)}>
-          {zoom ? "Voltar à edição" : "Modo leitura"}
         </button>
       </div>
     </aside>
