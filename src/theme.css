@@ -1350,3 +1350,64 @@ input[type="radio"] {
     font-size: 12px;
   }
 }
+
+.focused-workspace.without-preview {
+  grid-template-columns: 215px minmax(0, 1fr);
+}
+:root:has(dialog.preview-drawer[open]),
+body:has(dialog.preview-drawer[open]) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.modal.preview-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(760px, 92vw);
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.modal.preview-drawer[open] {
+  display: flex;
+  flex-direction: column;
+  animation: preview-slide-in 180ms ease-out;
+}
+.modal.preview-drawer::backdrop {
+  background: #0009;
+}
+.preview-drawer > .modal-header {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 16px 20px;
+  border-bottom: 1px solid #8883;
+}
+.preview-drawer .cifra-preview,
+.preview-drawer .cifra-preview.reading-mode {
+  position: static;
+  align-self: stretch;
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  max-width: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.preview-drawer .cifra-page {
+  max-height: none;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+@keyframes preview-slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal.preview-drawer[open] { animation: none; }
+}

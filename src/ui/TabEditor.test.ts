@@ -20,4 +20,7 @@ it("abre o primeiro evento automaticamente e não marca as notas existentes como
   expect(html).toContain("Uma posição por corda.");
   expect(html).toContain("Adicionar");
   expect(html).toContain("<kbd>Enter</kbd>");
+  expect(html).toContain("casa 19");
+  expect(html).not.toContain("casa 20");
+  expect(html).toContain("0–19");
 });

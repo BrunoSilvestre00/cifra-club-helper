@@ -17,6 +17,7 @@ import {
   ChevronRight,
   Save,
   PanelLeftClose,
+  PanelRightOpen,
 } from "lucide-react";
 import {
   newLyric,
@@ -79,7 +80,7 @@ export default function SongEditor({
     redo,
   } = useEditor();
   const [loaded, setLoaded] = useState(false),
-    [modal, setModal] = useState<"export" | "settings" | null>(null),
+    [modal, setModal] = useState<"export" | "settings" | "preview" | null>(null),
     [tuningBlock, setTuningBlock] = useState<string | undefined>(),
     [toast, setToast] = useState(""),
     [error, setError] = useState(""),
@@ -312,6 +313,15 @@ export default function SongEditor({
             <Download size={16} />
             Exportar
           </button>
+          <button
+            className="secondary"
+            aria-haspopup="dialog"
+            aria-expanded={modal === "preview"}
+            onClick={() => setModal("preview")}
+          >
+            <PanelRightOpen size={16} />
+            Prévia
+          </button>
         </div>
       </div>
       {(message || error) && (
@@ -328,7 +338,7 @@ export default function SongEditor({
           </button>
         </div>
       )}
-      <div className="focused-workspace">
+      <div className="focused-workspace without-preview">
         <aside className={"structure-sidebar " + (sidebarOpen ? "open" : "")}>
           <div className="structure-title">
             <div>
@@ -630,7 +640,7 @@ export default function SongEditor({
               <h2>Vamos montar sua música?</h2>
               <p>
                 Escolha o artista acima e adicione letra, arranjo ou os dois no
-                mesmo bloco. O resultado aparece ao lado.
+                mesmo bloco. Abra a prévia para ver o resultado completo.
               </p>
               <div>
                 <button className="primary" onClick={() => add("lyrics")}>
@@ -655,13 +665,24 @@ export default function SongEditor({
             </div>
           )}
         </main>
-        <SongPreview
-          song={song}
-          selectedId={selected?.block.id ?? null}
-          onSelect={choose}
-          onCopy={() => void copy()}
-        />
       </div>
+      {modal === "preview" && (
+        <Modal
+          title="Prévia da música"
+          className="preview-drawer"
+          onClose={() => setModal(null)}
+        >
+          <SongPreview
+            song={song}
+            selectedId={selected?.block.id ?? null}
+            onSelect={(sectionId, blockId) => {
+              choose(sectionId, blockId);
+              setModal(null);
+            }}
+            onCopy={() => void copy()}
+          />
+        </Modal>
+      )}
       {toast && (
         <div className="toast" role="status">
           <Check size={16} />

@@ -42,6 +42,7 @@ export default function TabEditor({ tab }: { tab: Tab }) {
     [technique, setTechnique] = useState<Technique>("none"),
     [target, setTarget] = useState(7),
     [startFret, setStartFret] = useState(0);
+  const visibleFretCount = Math.min(20, 37 - startFret);
   const [feedback, setFeedback] = useState(
     "Selecione as posições no braço e clique em Adicionar ou pressione Enter.",
   );
@@ -159,15 +160,15 @@ export default function TabEditor({ tab }: { tab: Tab }) {
       <div className="fretboard-scroll">
         <div
           className="fretboard"
-          style={{ gridTemplateColumns: "42px repeat(13, minmax(40px, 1fr))" }}
+          style={{
+            gridTemplateColumns: `42px repeat(${visibleFretCount}, minmax(40px, 1fr))`,
+            minWidth: 42 + visibleFretCount * 40,
+          }}
         >
           <div className="fret-label">Casa</div>
-          {Array.from({ length: 13 }, (_, i) => (
+          {Array.from({ length: visibleFretCount }, (_, i) => (
             <div className="fret-label" key={i}>
               {i + startFret}
-              {[3, 5, 7, 9, 12, 15, 17, 19, 21, 24].includes(i + startFret) && (
-                <span className="fret-dot" />
-              )}
             </div>
           ))}
           {instrument.courses.map((course, c) => (
@@ -176,7 +177,7 @@ export default function TabEditor({ tab }: { tab: Tab }) {
                 {course.label}
                 <small>{c + 1}</small>
               </div>
-              {Array.from({ length: 13 }, (_, i) => {
+              {Array.from({ length: visibleFretCount }, (_, i) => {
                 const fret = i + startFret;
                 const existing = event?.notes.some(
                   (n) => n.course === c && n.fret === fret,
@@ -213,6 +214,18 @@ export default function TabEditor({ tab }: { tab: Tab }) {
               })}
             </div>
           ))}
+          <div className="fretboard-markers" aria-hidden="true">
+            {Array.from({ length: visibleFretCount }, (_, i) => {
+              const fret = i + startFret;
+              return [3, 5, 7, 9, 12, 15, 17].includes(fret) ? (
+                <i
+                  className="fretboard-marker"
+                  key={fret}
+                  style={{ gridColumn: i + 2 }}
+                />
+              ) : null;
+            })}
+          </div>
         </div>
       </div>
       <div className="fret-selection">
@@ -264,9 +277,9 @@ export default function TabEditor({ tab }: { tab: Tab }) {
             value={startFret}
             onChange={(e) => setStartFret(Number(e.target.value))}
           >
-            {[0, 12, 24].map((n) => (
+            {[0, 19].map((n) => (
               <option key={n} value={n}>
-                {n}–{n + 12}
+                {n}–{Math.min(n + 19, 36)}
               </option>
             ))}
           </select>

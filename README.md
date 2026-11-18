@@ -57,6 +57,8 @@ Os dados pertencem à origem e ao perfil do navegador. Ao trocar de computador, 
 - Cada arranjo tem instrumento/afinação próprios: violão de seis cordas ou viola de dez cordas em cinco ordens duplas. Há presets Cebolão E/D e afinação personalizada. Técnicas, pausas, espaçamento e frases são editáveis.
 - A prévia completa fica sempre visível e usa Roboto Mono, com acordes em negrito laranja. Clicar em um trecho seleciona seu bloco. Exporte TXT, copie o resultado ou baixe JSON individual pelo botão Exportar.
 - O salvamento automático ocorre após 700 ms sem alterações. Atalhos: Ctrl/⌘+S salva, Ctrl/⌘+Z desfaz, Ctrl/⌘+Shift+Z ou Ctrl+Y refaz. Até 100 operações de histórico na sessão.
+- O braço mostra as casas 0 a 19, com rolagem horizontal quando necessário. O seletor de faixa também permite acessar as casas 19 a 36.
+- O botão **Prévia** abre um painel sobreposto pela direita e escurece o editor. Feche pelo X, pela tecla Escape ou pelo fundo; selecionar um bloco na prévia volta à edição dele.
 - A logo do usuário aparece no cabeçalho e no favicon. O botão com sol/lua da Lucide alterna os temas claro e escuro e lembra a escolha no navegador.
 
 ## GitHub Pages

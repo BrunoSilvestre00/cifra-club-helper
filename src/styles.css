@@ -904,9 +904,28 @@ h3 {
   padding-bottom: 5px;
 }
 .fretboard {
+  position: relative;
   display: grid;
   min-width: 600px;
   isolation: isolate;
+}
+.fretboard-markers {
+  position: absolute;
+  inset: 26px 0 0;
+  display: grid;
+  grid-template-columns: inherit;
+  align-items: center;
+  justify-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.fretboard-marker {
+  grid-row: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px #0002, 0 1px 3px #0003;
 }
 .fret-row {
   display: contents;
@@ -980,7 +999,7 @@ h3 {
 }
 .fret span {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-family: var(--mono);
   font-size: 10px;
   min-width: 21px;
