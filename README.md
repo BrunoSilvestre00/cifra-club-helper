@@ -51,6 +51,7 @@ Os dados pertencem à origem e ao perfil do navegador. Ao trocar de computador, 
 - A lateral mostra a estrutura. Selecione um bloco para editar apenas ele. Duplique, exclua, reordene pelas setas ou arraste pela alça.
 - Partes predefinidas: **Música inteira**, Introdução, Verso, Pré-refrão, Refrão, Interlúdio, Solo, Ponte e Final.
 - **Letra** contém várias linhas e acordes por sílaba. Clique na prévia da linha para inserir um acorde; arraste ou ajuste sua posição para reposicionar.
+- Para colar uma cifra pronta, cole o texto na caixa de letra e clique em **Converter cifra**, junto às ações do bloco. Reconhece linhas de acordes acima da letra e acordes junto às palavras, como `[Am]Minha [G]canção`. A conversão preserva as colunas, os acordes manuais e também funciona em Arranjo com letra; Ctrl+Z desfaz tudo em uma operação.
 - **Arranjo** usa o braço interativo. Selecione uma ou mais posições em cordas diferentes e confirme com **Adicionar** ou **Enter** com o foco no braço. Uma casa por corda; clicar de novo desmarca. Todas as notas entram juntas, permitindo duetos.
 - **Novo evento** insere depois do evento aberto; **No evento selecionado** acrescenta notas às cordas escolhidas. Havendo eventos, um permanece aberto. Excluir seleciona o anterior; excluir o primeiro seleciona o novo primeiro.
 - **Arranjo com letra** reúne os dois editores no mesmo bloco. Na saída, a tablatura aparece antes da letra e dos acordes, sob um único título de parte.
@@ -83,7 +84,7 @@ npm test
 npm run build:pages
 ```
 
-São 58 testes Vitest. Cobrem renderização, duetos com destinos independentes, direção automática das técnicas, exclusão/seleção de eventos, blocos combinados, importação/exportação de várias músicas, chaves duplas, transações, migração e persistência no IndexedDB. `fake-indexeddb` é usado apenas nos testes.
+São 67 testes Vitest. Cobrem conversão de cifras coladas, renderização, agrupamento de títulos consecutivos, duetos com destinos independentes, direção automática das técnicas, exclusão/seleção de eventos, blocos combinados, importação/exportação de várias músicas, chaves duplas, transações, migração e persistência no IndexedDB. `fake-indexeddb` é usado apenas nos testes.
 
 - `src/domain`: modelo musical estruturado e validado com Zod, artistas, partes e formato dos backups.
 - `src/persistence`: IndexedDB, índices únicos, importação transacional e migração.

@@ -67,7 +67,7 @@ export default function LyricEditor({
         maxLength={10000}
         value={line.text}
         placeholder={
-          "Escreva ou cole a letra deste trecho…\nCada linha continua dentro deste bloco."
+          "Escreva ou cole a letra deste trecho…\nJá tem acordes? Cole a cifra e clique em Converter cifra no topo do bloco."
         }
         onSelect={(e) =>
           setOffset(

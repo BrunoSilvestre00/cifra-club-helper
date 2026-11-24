@@ -18,12 +18,14 @@ import {
   Save,
   PanelLeftClose,
   PanelRightOpen,
+  WandSparkles,
 } from "lucide-react";
 import {
   newLyric,
   newTab,
   newArrangementLyrics,
   blockParts,
+  lyricSchema,
   type Song,
   type Artist,
   type Block,
@@ -34,6 +36,7 @@ import {
   duplicateBlock,
   moveBlock,
 } from "../domain/blocks";
+import { convertPastedLyric } from "../domain/lyrics";
 import { download } from "../persistence/projects";
 import { renderSong } from "../render/text";
 import { useEditor } from "../store/editor";
@@ -74,6 +77,7 @@ export default function SongEditor({
     activeSection,
     activeBlock,
     update,
+    updateBlock,
     load,
     select,
     undo,
@@ -565,6 +569,38 @@ export default function SongEditor({
                     </select>
                   </label>
                   <div className="block-actions">
+                    {selected.block.kind !== "tab" && (
+                      <button
+                        className="small-button"
+                        title="Converter acordes colados acima da letra ou entre colchetes"
+                        disabled={!(selected.block.kind === "lyrics" ? selected.block.text : selected.block.lyrics.text).trim()}
+                        onClick={() => {
+                          const block = selected.block;
+                          if (block.kind === "tab") return;
+                          const line = block.kind === "lyrics" ? block : block.lyrics;
+                          const result = convertPastedLyric(line);
+                          if (!result.converted) {
+                            setToast("Nenhum acorde encontrado. Cole os acordes acima da letra ou como [Am] junto às palavras.");
+                            return;
+                          }
+                          const parsed = lyricSchema.safeParse(result.lyric);
+                          if (!parsed.success) {
+                            setError("Não foi possível converter: o bloco deve ter até 10.000 caracteres e 1.000 acordes.");
+                            return;
+                          }
+                          updateBlock(line.id, (draft) => {
+                            if (draft.kind === "lyrics") {
+                              draft.text = parsed.data.text;
+                              draft.chords = parsed.data.chords;
+                            }
+                          });
+                          setToast(`${result.converted} acorde(s) convertido(s). Use Ctrl+Z para desfazer.`);
+                        }}
+                      >
+                        <WandSparkles size={15} />
+                        Converter cifra
+                      </button>
+                    )}
                     <button
                       className="icon-button"
                       title="Subir bloco"
